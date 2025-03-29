@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div v-cloak id="app">
+        <input type="text" placeholder="输入你喜欢的成员。。。" v-model="newidol" @keydown.enter.pervent="add"><button @click.prevent="add">提交</button>
+        <button @click.prevent="del">delete</button>
+        <div v-show="nct.length>5" style="color:red">数量太多了</div>
+        <li v-for="idols in nct">
+            <span style="color:rgb(151, 35, 35)" v-if="nct.length >=5">{{idols}}</span>
+            <span v-if="nct.length <5">{{idols}}</span>
+        </li>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const app = Vue.createApp({
+            
+            
+            data: function(){//data属性，必须传入是个函数，要有返回值
+                return{
+                    nct:['mark','haechan'],
+                    newidol:''
+                }
+            },
+            methods:{
+                add() {
+                    this.nct.push(this.newidol);
+                    this.newidol = '';
+                },
+                del(){
+                    if(this.nct.length>0){
+                        this.nct.splice
+                        (this.nct.length -1,1);
+                    }
+                }
+            }  
+        })
+        app.mount("#app")
+        </script>
+</body>
+</html>
